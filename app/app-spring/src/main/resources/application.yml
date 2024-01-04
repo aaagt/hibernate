@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+        default_schema: public
+        ddl-auto: update
+    generate-ddl: true
+    defer-datasource-initialization: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydatabase
+    username: myuser
+    password: secret
+    #    initialization-mode: none
+    continue-on-error: false
+  #    initialize: false
+  sql:
+    init:
+      mode: always
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
