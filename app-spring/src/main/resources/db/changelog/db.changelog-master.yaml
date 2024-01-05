@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: 'migrations/1.0.0/1.0.0 Init migration.sql'
+      relativeToChangeLogFile: true
+  - include:
+      file: 'migrations/1.0.1/1.0.1 Add persons.sql'
+      relativeToChangeLogFile: true
