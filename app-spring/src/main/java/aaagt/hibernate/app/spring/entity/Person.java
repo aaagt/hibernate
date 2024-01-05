@@ -1,4 +1,4 @@
-package aaagt.hibernate.persons.entity;
+package aaagt.hibernate.app.spring.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;

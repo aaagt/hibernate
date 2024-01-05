@@ -1,6 +1,6 @@
-package aaagt.hibernate.persons.repository;
+package aaagt.hibernate.app.spring.repository;
 
-import aaagt.hibernate.persons.entity.Person;
+import aaagt.hibernate.app.spring.entity.Person;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;

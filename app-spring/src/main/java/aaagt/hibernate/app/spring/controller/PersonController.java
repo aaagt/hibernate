@@ -1,7 +1,7 @@
-package aaagt.hibernate.persons.api.controller;
+package aaagt.hibernate.app.spring.controller;
 
-import aaagt.hibernate.persons.api.dto.PersonResponseDto;
-import aaagt.hibernate.persons.repository.PersonRepository;
+import aaagt.hibernate.app.spring.dto.PersonResponseDto;
+import aaagt.hibernate.app.spring.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

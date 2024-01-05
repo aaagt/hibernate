@@ -1,4 +1,4 @@
-package aaagt.hibernate.persons.api.dto;
+package aaagt.hibernate.app.spring.dto;
 
 public record PersonResponseDto(
         String name,
