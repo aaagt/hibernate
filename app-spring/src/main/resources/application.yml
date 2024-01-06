@@ -8,7 +8,7 @@ spring:
         default_schema: public
         ddl-auto: update
     generate-ddl: true
-    defer-datasource-initialization: true
+    defer-datasource-initialization: false
   datasource:
     url: jdbc:postgresql://localhost:5432/mydatabase
     username: myuser
