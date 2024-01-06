@@ -16,9 +16,8 @@ public class PersonRepository {
 
     public List<Person> getPersonsByCity(String city) {
         final var sql = "SELECT p FROM Person p WHERE LOWER(p.cityOfLiving) = :city";
-        System.out.println();
         TypedQuery<Person> query = entityManager.createQuery(sql, Person.class)
-                .setParameter("city", city.toLowerCase());//city.toLowerCase());
+                .setParameter("city", city.toLowerCase());
         List<Person> result = query.getResultList();
         return result;
     }
