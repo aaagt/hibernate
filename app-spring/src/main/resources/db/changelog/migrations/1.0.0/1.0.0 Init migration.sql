@@ -1,4 +1,14 @@
-TRUNCATE TABLE persons;
+CREATE SCHEMA IF NOT EXISTS public;
+
+
+CREATE TABLE IF NOT EXISTS persons (
+    name           VARCHAR(32) NOT NULL,
+    surname        VARCHAR(32) NOT NULL,
+    age            INTEGER      NOT NULL,
+    phone_number   VARCHAR(20)  NOT NULL,
+    city_of_living VARCHAR(32)  NOT NULL,
+    CONSTRAINT pk PRIMARY KEY (name, surname, age)
+);
 
 INSERT INTO persons(name, surname, age, phone_number, city_of_living)
 VALUES
