@@ -1,7 +1,7 @@
 package aaagt.hibernate.app.spring.controller;
 
 import aaagt.hibernate.app.spring.dto.PersonResponseDto;
-import aaagt.hibernate.app.spring.repository.PersonRepositoryJPA;
+import aaagt.hibernate.app.spring.repository.PersonRepositoryQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ import static aaagt.hibernate.app.spring.mapper.PersonMapper.toResponseDtos;
 @RequiredArgsConstructor
 public class PersonController {
 
-    private final PersonRepositoryJPA repository;
+    private final PersonRepositoryQuery repository;
 
     @GetMapping("/by-city")
     ResponseEntity<List<PersonResponseDto>> byCity(@RequestParam String city) {
