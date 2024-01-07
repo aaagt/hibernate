@@ -2,6 +2,7 @@ package aaagt.hibernate.app.spring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -16,13 +17,14 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @EnableWebSecurity
 @Configuration
+@EnableMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/persons/by-city**").permitAll()
+                        //.requestMatchers("/persons/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(withDefaults())
@@ -35,19 +37,25 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService users() {
         // The builder will ensure the passwords are encoded before saving in memory
-        UserDetails user = User.builder()
-                .username("user")
+        UserDetails reader = User.builder()
+                .username("reader")
                 .password(passwordEncoder().encode("password"))
-                .authorities("resource")
-                .roles("USER")
+                //.authorities("PERSONS.READ")
+                .roles("READ")
+                .build();
+        UserDetails writer = User.builder()
+                .username("writer")
+                .password(passwordEncoder().encode("password"))
+                //.authorities("PERSONS.WRITE")
+                .roles("WRITE")
                 .build();
         UserDetails admin = User.builder()
                 .username("admin")
                 .password(passwordEncoder().encode("password"))
-                .authorities("resource", "admin")
-                .roles("USER", "ADMIN")
+                //.authorities("PERSONS.READ", "PERSONS.WRITE", "PERSONS.DELETE")
+                .roles("READ", "WRITE", "DELETE")
                 .build();
-        return new InMemoryUserDetailsManager(user, admin);
+        return new InMemoryUserDetailsManager(reader, writer, admin);
     }
 
     @Bean
